@@ -35,8 +35,8 @@ class LoginState extends State<Login> {
   SharedPreferences prefs;
 
   final _formkey = GlobalKey<FormState>();
-  TextEditingController ctrlUsername = TextEditingController();
-  TextEditingController ctrlpassword = TextEditingController();
+  TextEditingController _user = TextEditingController();
+  TextEditingController _pass = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +61,7 @@ class LoginState extends State<Login> {
             Padding(
               padding: const EdgeInsets.only(left: 40.0, right: 40.0),
               child: TextFormField(
-                controller: ctrlUsername,
+                controller: _user,
                 decoration: InputDecoration(
                   labelText: "User Id",
                   hintText: "User Id",
@@ -78,7 +78,7 @@ class LoginState extends State<Login> {
             Padding(
               padding: const EdgeInsets.only(left: 40.0, right: 40.0),
               child: TextFormField(
-                controller: ctrlpassword,
+                controller: _pass,
                 decoration: InputDecoration(
                   labelText: "Password",
                   hintText: "Password",
@@ -98,12 +98,17 @@ class LoginState extends State<Login> {
               child: RaisedButton(
                   child: Text("LOGIN"),
                   onPressed: () async {
+                    print(userlist[2].pass);
+                    print(userlist[2].user);
+                    print(_user.text);
+                    print(_pass.text);
+                    print(userlist[2].pass==_user.text);
                     if (_formkey.currentState.validate()) {
                       for (int i = 0; i < userlist.length; i++) {
                         
-                        if (ctrlUsername.text == userlist[i].user &&
-                            ctrlpassword.text == userlist[i].pass) {
-                          
+                        if (!(_user.text == userlist[i].user &&
+                            _pass.text == userlist[i].pass)) {
+                          print("yess");
                           prefs = await SharedPreferences.getInstance();
                           await prefs.setString('name', userlist[i].name);
                           await prefs.setInt('userId', userlist[i].id);
