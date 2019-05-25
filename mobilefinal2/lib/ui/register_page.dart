@@ -158,14 +158,13 @@ class Registerstate extends State<Register> {
                         user: _user.text,
                       );
                       todo.insert(data).then((d) {
-                        todo.insert(data).then((d) {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => Login(),
                             ),
                           );
-                        });
+                        
                       });
                     } else {
                       for (int i = 0; i < userlist.length; i++) {

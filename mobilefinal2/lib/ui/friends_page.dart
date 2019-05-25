@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobilefinal2/models/freinds_convert.dart';
 import 'package:mobilefinal2/models/user.dart';
-import 'package:mobilefinal2/ui/todo.dart';
+import 'package:mobilefinal2/ui/todo_page.dart';
 
 import 'home_page.dart';
 
@@ -31,7 +31,7 @@ class FriendState extends State<Friend> {
               Text(
                       "${friends[index].id} : ${friends[index].name}",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
                     SizedBox(height: 20),
                     Text(

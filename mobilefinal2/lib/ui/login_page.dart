@@ -100,14 +100,14 @@ class LoginState extends State<Login> {
                   onPressed: () async {
                     if (_formkey.currentState.validate()) {
                       for (int i = 0; i < userlist.length; i++) {
+                        
                         if (ctrlUsername.text == userlist[i].user &&
                             ctrlpassword.text == userlist[i].pass) {
-                          print("successssssssss");
+                          
                           prefs = await SharedPreferences.getInstance();
                           await prefs.setString('name', userlist[i].name);
                           await prefs.setInt('userId', userlist[i].id);
-                          if (userlist[i].id == prefs.getInt('userId')) {
-                            
+                          
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -115,7 +115,7 @@ class LoginState extends State<Login> {
                               ),
                             );
                           }
-                        } else {
+                         else {
                           return "Invalid user or password";
                         }
                       }

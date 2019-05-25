@@ -4,6 +4,7 @@ import 'package:mobilefinal2/ui/profile_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './text_file.dart';
 import 'friends_page.dart';
+import 'login_page.dart';
 
 class Home extends StatefulWidget {
   final Todo user;
@@ -50,7 +51,7 @@ class HomeState extends State<Home> {
               Text(name),
               Text("this is my quait ${quaot}"),
               Container(
-                  margin: const EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 30),
                   child: RaisedButton(
                     child: Text('PROFILE SETUP'),
                     onPressed: () {
@@ -63,11 +64,11 @@ class HomeState extends State<Home> {
                     },
                   )),
               Container(
-                  margin: const EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 30),
                   child: RaisedButton(
                     child: Text('MY FRIENDS'),
                     onPressed: () {
-                        Navigator.pushReplacement(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => Friend(user: user),
@@ -76,13 +77,18 @@ class HomeState extends State<Home> {
                     },
                   )),
               Container(
-                  margin: const EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 30),
                   child: RaisedButton(
                     child: Text('SIGN OUT'),
                     onPressed: () async {
                       prefs = await SharedPreferences.getInstance();
                       prefs.clear();
-                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                      );
                     },
                   )),
             ]),
